@@ -47,7 +47,7 @@
                     <a href="{{route('pages.edit', $project->id )}}">edit progetto</a>
                 </li>
                 @endforeach
-                
+
             </ul>
         </li>
         @endforeach

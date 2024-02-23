@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 use App\Models\type;
 
+use App\Http\Requests\projecteFormRequests;
+
 
 // controller che si riferisce ad i models type
 class typeController extends Controller
@@ -26,7 +28,7 @@ class typeController extends Controller
         return view('pages.create', compact('types', 'technologies'));
     }
     // metodo store prende i dati nella pagina create e li mette nel database 
-    public function store(Request $request)
+    public function store(projecteFormRequests $request)
     {
         // qua prende tutti i dati nel form 
         $data = $request->all();
@@ -58,7 +60,7 @@ class typeController extends Controller
         return view('pages.edit', compact('project', 'types', 'technologies'));
     }
 
-    public function upgrade(Request $request, $id)
+    public function upgrade(projecteFormRequests $request, $id)
     {
         // qua prende tutti i dati nel form 
         $data = $request->all();

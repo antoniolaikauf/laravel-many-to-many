@@ -6,6 +6,15 @@
 <h1>
     tipi di progetto
 </h1>
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 <!-- form per crearer un nuovo progetto -->
 <form action="{{route('pages.store')}}" method="POST">
 
