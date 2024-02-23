@@ -21,6 +21,7 @@ return new class extends Migration
             // creazione della colonna type_id nella tabella projects essendo che la tabella type è il nucleo
             // dentro alle tonde bisogna mettere il nome della tabella che vuoi collegare con trattino id es nometabella_id e creerà una nuova colonna
             $table->foreignId('type_id')->constrained();
+            // $table->foreignId('technologie')->constrained();
         });
     }
 
@@ -37,6 +38,9 @@ return new class extends Migration
             // grazie al quale collegherà le due tabelle in base a one to many quindi la tabella che sarebbe many deve avere la foreign key
             $table->dropForeign('projects_type_id_foreign');
             $table->dropColumn('type_id');
+
+            // $table->dropForeign('projects_technologie_foreign');
+            // $table->dropColumn('technologie');
         });
     }
 };
