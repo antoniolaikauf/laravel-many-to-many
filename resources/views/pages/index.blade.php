@@ -44,6 +44,7 @@
                     <div>
                         descrizione del progetto: {{$project->descrizione}}
                     </div>
+                    <a href="{{route('pages.edit', $project->id )}}">edit progetto</a>
                 </li>
                 @endforeach
             </ul>

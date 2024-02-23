@@ -36,6 +36,13 @@ class typeController extends Controller
 
         $project->save();
 
-        return redirect()->route('type.index');
+        return redirect()->route('pages.index');
+    }
+
+    public function edit($id)
+    {
+        $project = project::find($id);
+        $types = type::all();
+        return view('pages.edit', compact('project', 'types'));
     }
 }
