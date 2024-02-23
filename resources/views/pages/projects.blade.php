@@ -12,7 +12,7 @@
         @foreach($projects as $project)
         <li class="my-3">
             <div>
-                {{$project->nome}}
+                {{$project->nome_progetto}}
             </div>
             <!-- qua non si fa un ciclo essendo che i progetti faranno riferimento ad un solo type quindi non ritornerà un array  -->
             {{$project->type->risorse_usate}}

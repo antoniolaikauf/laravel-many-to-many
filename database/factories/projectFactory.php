@@ -18,7 +18,7 @@ class projectFactory extends Factory
     {
         // factory rimangono uguale si mettono il nome delle colonne a cui devono riferirsi e si specifica quali dati mettere all'interno
         return [
-            'nome' => fake()->word(),
+            'nome_progetto' => fake()->word(),
             'inizio_progetto' => fake()->date(),
             'descrizione' => fake()->paragraph(),
         ];

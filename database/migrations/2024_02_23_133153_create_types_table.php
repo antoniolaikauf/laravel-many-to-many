@@ -18,6 +18,7 @@ return new class extends Migration
 
             // creazione della tabella types che si si collegherà con projects
             $table->boolean('in_gruppo');
+            $table->string('nome');
             $table->string('risorse_usate');
             $table->timestamps();
         });

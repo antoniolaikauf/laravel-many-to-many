@@ -18,6 +18,7 @@ class typeFactory extends Factory
     {
         // factory rimangono uguale si mettono il nome delle colonne a cui devono riferirsi e si specifica quali dati mettere all'interno
         return [
+            'nome' => fake()->word(),
             'in_gruppo' => fake()->boolean(),
             'risorse_usate' => fake()->randomElement(['umane', 'strumentali ', 'finanziare']),
         ];
