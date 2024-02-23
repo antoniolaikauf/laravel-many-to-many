@@ -15,7 +15,9 @@ class project extends Model
 
         return $this->belongsTo(type::class);
     }
-
+    // si fa il collegamento con i models della tabella con  cui è collagata 
+    // in questo caso si collega alla technologies in modo plurale essendo che è un collegamento many to many
+    // e si usa belongstomany con dentro i models a cui è collegata 
     public function technologies()
     {
         return $this->belongsToMany(technology::class);

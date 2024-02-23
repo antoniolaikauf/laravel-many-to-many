@@ -16,6 +16,7 @@ class technologyFactory extends Factory
      */
     public function definition()
     {
+        // factory rimangono uguale 
         return [
             'nome_tecnologia' => fake()->word(),
         ];
