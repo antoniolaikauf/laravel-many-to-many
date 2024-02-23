@@ -19,6 +19,6 @@ class typeSeeder extends Seeder
     public function run()
     {
         // qua si fa normalmente essendo che non deve far riferimento a niente questa tabella
-        type::factory()->count(7)->create();
+        type::factory()->count(10)->create();
     }
 }

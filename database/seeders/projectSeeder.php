@@ -19,7 +19,7 @@ class projectSeeder extends Seeder
     {
         // la make costruisce i post ma non li salva nel database
         // qua si fa un ciclo e ogni volta prende un id del type randomico grazie a inrandomorder e viene associato ad una row del progetto e poi salvato
-        project::factory()->count(30)->make()->each(function ($project) {
+        project::factory()->count(10)->make()->each(function ($project) {
             $type = type::inRandomOrder()->first();
             $project->type()->associate($type);
 

@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
         // se si crea prima la tabella figlia non sa a chi riferirsi e quindi da errore
        $this->call([
             typeSeeder::class,
-            projectSeeder::class
+            projectSeeder::class,
+            technologySeeder::class,
        ]);
     }
 }
