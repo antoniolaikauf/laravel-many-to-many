@@ -21,7 +21,12 @@ return new class extends Migration
             // creazione della colonna type_id nella tabella projects essendo che la tabella type è il nucleo
             // dentro alle tonde bisogna mettere il nome della tabella che vuoi collegare con trattino id es nometabella_id e creerà una nuova colonna
             $table->foreignId('type_id')->constrained();
-            // $table->foreignId('technologie')->constrained();
+        });
+        Schema::table('project_technology', function (Blueprint $table) {
+            // creazione della colonna type_id nella tabella projects essendo che la tabella type è il nucleo
+            // dentro alle tonde bisogna mettere il nome della tabella che vuoi collegare con trattino id es nometabella_id e creerà una nuova colonna
+            $table->foreignId('project_id')->constrained();
+            $table->foreignId('technologies_id')->constrained();
         });
     }
 
@@ -41,6 +46,14 @@ return new class extends Migration
 
             // $table->dropForeign('projects_technologie_foreign');
             // $table->dropColumn('technologie');
+        });
+        Schema::table('project_technology', function (Blueprint $table) {
+            // creazione della colonna type_id nella tabella projects essendo che la tabella type è il nucleo
+            // dentro alle tonde bisogna mettere il nome della tabella che vuoi collegare con trattino id es nometabella_id e creerà una nuova colonna
+            $table->dropForeign('project_technology_project_id_foreign');
+            $table->dropColumn('project_id');
+            $table->dropForeign('project_technology_technologies_id_foreign');
+            $table->dropColumn('technologies_id');
         });
     }
 };
