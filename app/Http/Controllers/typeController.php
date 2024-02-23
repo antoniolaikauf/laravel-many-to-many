@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\project;
+use App\Models\technology;
 use Illuminate\Http\Request;
 
 use App\Models\type;
@@ -19,7 +20,8 @@ class typeController extends Controller
     public function create()
     {
         $types = type::all();
-        return view('pages.create', compact('types'));
+        $technologies = technology::all();
+        return view('pages.create', compact('types', 'technologies'));
     }
 
     public function store(Request $request)
@@ -36,6 +38,8 @@ class typeController extends Controller
 
         $project->save();
 
+        $project->technologies()->attach($data['technology_id']);
+
         return redirect()->route('pages.index');
     }
 
@@ -43,6 +47,26 @@ class typeController extends Controller
     {
         $project = project::find($id);
         $types = type::all();
-        return view('pages.edit', compact('project', 'types'));
+        $technologies = technology::all();
+        return view('pages.edit', compact('project', 'types', 'technologies'));
+    }
+
+    public function upgrade(Request $request, $id)
+    {
+        $data = $request->all();
+
+        $type = type::find($data['nome']);
+
+        $project = project::find($id);
+        $project->nome_progetto = $data['nome_progetto'];
+        $project->inizio_progetto = $data['inizio_progetto'];
+        $project->descrizione = $data['descrizione'];
+        $project->type()->associate($type);
+
+        $project->save();
+
+        $project->technologies()->sync($data['technology_id']);
+
+        return redirect()->route('pages.index');
     }
 }

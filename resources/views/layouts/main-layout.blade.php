@@ -13,7 +13,6 @@
     <div class="text-center">
         @include('components.header')
         @yield('content')
-        @include('components.footer')
     </div>
 </body>
 </html>
