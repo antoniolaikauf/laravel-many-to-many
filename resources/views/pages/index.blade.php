@@ -3,33 +3,34 @@
 <title>Home</title>
 @endsection
 @section('content')
-<h1>
-    tipi di progetto
-</h1>
 
-<div>
-    <a href="{{route('pages.create')}}">crea un nuovo progetto</a>
-    <ul>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>
+                <a href="{{route('pages.create')}}">crea un nuovo progetto</a>
+            </h1>
+        </div>
         @foreach($types as $type)
-        <li class="my-3">
+        <div class="col-6 text-start border">
             <div>
-                tipo di progetto {{$type->nome}}
+                <strong> tipo di progetto:</strong> {{$type->nome}}
             </div>
             <div>
-                gruppo di progetti n:{{$type->id}}
+                <strong>gruppo di progetti n:</strong>{{$type->id}}
             </div>
             <div>
-                risorse usate per questoprogetto :{{$type->risorse_usate}}
+                <strong> risorse usate per questoprogetto :</strong>{{$type->risorse_usate}}
             </div>
 
             @if($type->in_gruppo)
             <span>
-                progetto fatto in gruppo
+                <mark> progetto fatto in gruppo</mark>
             </span>
             @endif
             @if(!$type->in_gruppo)
             <span>
-                progetti fatto singolarmente
+                <mark>progetti fatto singolarmente</mark>
             </span>
             @endif
             <ul>
@@ -37,20 +38,20 @@
             e la tabella sarà dentro type  -->
                 @foreach($type-> projects as $project)
                 <li>
-                    nome progetto: {{$project->nome_progetto}}
+                    <h3>nome progetto: {{$project->nome_progetto}}</h3>
                     <div>
-                        data inizio del progetto: {{$project->inizio_progetto}}
+                        <strong> data inizio del progetto:</strong> {{$project->inizio_progetto}}
                     </div>
                     <div>
-                        descrizione del progetto: {{$project->descrizione}}
+                        <strong>descrizione del progetto: </strong>{{$project->descrizione}}
                     </div>
                     <a href="{{route('pages.edit', $project->id )}}">edit progetto</a>
                 </li>
                 @endforeach
 
             </ul>
-        </li>
+        </div>
         @endforeach
-    </ul>
+    </div>
 </div>
 @endsection
