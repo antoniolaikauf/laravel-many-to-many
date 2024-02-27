@@ -81,9 +81,10 @@ class typeController extends Controller
         return redirect()->route('pages.index');
     }
 
-    public function show()
+    public function show($id)
     {
+        $project = project::find($id);
 
-        return view('pages.show');
+        return view('pages.show', compact('project'));
     }
 }
