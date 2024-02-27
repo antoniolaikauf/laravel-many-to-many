@@ -55,8 +55,13 @@
 
                         </form>
                     </a>
-                    immagine
-                    <img src="{{ asset('storage/' . $project -> img) }}" alt="">
+                    @if(!$project->img)
+                    <div>
+                        <strong>questo progetto non ha immagine</strong>
+                    </div>
+                    @else
+                    <img src="{{ asset('storage/' . $project -> img) }}" alt="#">
+                    @endif
                 </li>
                 @endforeach
 
