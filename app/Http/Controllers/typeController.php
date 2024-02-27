@@ -80,4 +80,10 @@ class typeController extends Controller
 
         return redirect()->route('pages.index');
     }
+
+    public function show()
+    {
+
+        return view('pages.show');
+    }
 }

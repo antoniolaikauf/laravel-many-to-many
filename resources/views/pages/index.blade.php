@@ -38,14 +38,16 @@
             e la tabella sarà dentro type  -->
                 @foreach($type-> projects as $project)
                 <li>
-                    <h3>nome progetto: {{$project->nome_progetto}}</h3>
-                    <div>
-                        <strong> data inizio del progetto:</strong> {{$project->inizio_progetto}}
-                    </div>
-                    <div>
-                        <strong>descrizione del progetto: </strong>{{$project->descrizione}}
-                    </div>
-                    <a href="{{route('pages.edit', $project->id )}}">edit progetto</a>
+                    <a href="{{route('pages.show',$project->id)}}">
+                        <h3>nome progetto: {{$project->nome_progetto}}</h3>
+                        <div>
+                            <strong> data inizio del progetto:</strong> {{$project->inizio_progetto}}
+                        </div>
+                        <div>
+                            <strong>descrizione del progetto: </strong>{{$project->descrizione}}
+                        </div>
+                        <a href="{{route('pages.edit', $project->id )}}">edit progetto</a>
+                    </a>
                 </li>
                 @endforeach
 
