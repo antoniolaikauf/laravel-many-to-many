@@ -16,7 +16,7 @@
             </div>
             @endif
             <!-- form per crearer un nuovo progetto -->
-            <form action="{{route('pages.store')}}" method="POST">
+            <form action="{{route('pages.store')}}" method="POST" enctype="multipart/form-data">
 
                 @csrf
                 @method('POST')
@@ -24,8 +24,11 @@
                 <label for="nome_progetto">metti nome progetto</label>
                 <input class="form-control my-3" type="text" placeholder="Default input" aria-label="default input example" name="nome_progetto">
                 <!-- valore che da il giorno che hai iniziato il  progetto -->
-                <label for="inizio_progetto my-3">data inizio progetto</label>
-                <input type="date" name="inizio_progetto" id="inizio_progetto">
+                <label for="inizio_progetto ">data inizio progetto</label>
+                <input type="date" class="form-control my-3" name="inizio_progetto" id="inizio_progetto">
+
+                <label for="img"> inserisci l'immagine</label>
+                <input type="file" class="form-control my-3" name="img" id="img">
 
                 <!-- valore che da la descrizione del progetto -->
                 <label for="descrizione">metti descrizione del progetto</label>

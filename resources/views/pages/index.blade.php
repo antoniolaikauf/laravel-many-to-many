@@ -55,6 +55,8 @@
 
                         </form>
                     </a>
+                    immagine
+                    <img src="{{ asset('storage/' . $project -> img) }}" alt="">
                 </li>
                 @endforeach
 

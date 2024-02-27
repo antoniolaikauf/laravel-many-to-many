@@ -6,6 +6,8 @@ use App\Models\project;
 use App\Models\technology;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Storage;
+
 use App\Models\type;
 
 use App\Http\Requests\projecteFormRequests;
@@ -35,11 +37,16 @@ class typeController extends Controller
         // qua essendo che bisogna associare un type per il progetto si è usato una select essendo che un progetto avra un type 
         // e quindi con find si trova il type che c'è nell valore nome che si trova nella select
         $type = type::find($data['nome']);
+
+        $img = $data['img'];
+        $img_path = Storage::disk('public')->put('imgs', $img);
+
         // qua si crea un nuovo componente
         $project = new project();
         $project->nome_progetto = $data['nome_progetto'];
         $project->inizio_progetto = $data['inizio_progetto'];
         $project->descrizione = $data['descrizione'];
+        $project->img = $img_path;
         // qua si associa il type
         $project->type()->associate($type);
 

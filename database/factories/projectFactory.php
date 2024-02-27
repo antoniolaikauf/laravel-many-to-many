@@ -21,6 +21,7 @@ class projectFactory extends Factory
             'nome_progetto' => fake()->word(),
             'inizio_progetto' => fake()->date(),
             'descrizione' => fake()->paragraph(),
+            'img' => null,
         ];
     }
 }
