@@ -87,4 +87,11 @@ class typeController extends Controller
 
         return view('pages.show', compact('project'));
     }
+    public function delete($id)
+    {
+        $project = project::find($id);
+        $project->technologies()->sync([]);
+        $project->delete();
+        return redirect()->route('pages.index');
+    }
 }

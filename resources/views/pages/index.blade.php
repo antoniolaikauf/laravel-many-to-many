@@ -47,6 +47,13 @@
                             <strong>descrizione del progetto: </strong>{{$project->descrizione}}
                         </div>
                         <a href="{{route('pages.edit', $project->id )}}">edit progetto</a>
+                        <form action=" {{route('pages.delete',$project->id)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+
+                            <input type="submit" value="delete">
+
+                        </form>
                     </a>
                 </li>
                 @endforeach

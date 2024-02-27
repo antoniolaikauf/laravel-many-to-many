@@ -13,8 +13,10 @@ Route::get('/project/create', [typeController::class, 'create'])->name('pages.cr
 Route::post('/project/store', [typeController::class, 'store'])->name('pages.store');
 // rotta per portare alla pagina dell'edit
 Route::get('/project/{id}/edit', [typeController::class, 'edit'])->name('pages.edit');
-
+// rotta per portare a pagina show
 Route::get('/project/{id}', [typeController::class, 'show'])->name('pages.show');
+
+Route::delete('/project/{id}7delete', [typeController::class, 'delete'])->name('pages.delete');
 // rotta che permette di aggiornare un nuovo progetto
 Route::put('/project/{id}/upgrade', [typeController::class, 'upgrade'])->name('pages.upgrade');
 // creazione della rotta 2 è uguale alla prima ma si usano due controller diversi 
