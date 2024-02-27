@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+// importazione del store
+use Illuminate\Support\Facades\Storage;
+// importazione dei models 
 use App\Models\project;
 use App\Models\technology;
-use Illuminate\Http\Request;
-
-use Illuminate\Support\Facades\Storage;
-
 use App\Models\type;
-
+// importazione delle validation
 use App\Http\Requests\projecteFormRequests;
 
 
@@ -37,8 +37,10 @@ class typeController extends Controller
         // qua essendo che bisogna associare un type per il progetto si è usato una select essendo che un progetto avra un type 
         // e quindi con find si trova il type che c'è nell valore nome che si trova nella select
         $type = type::find($data['nome']);
-
+        // si prende il contenuto del input file 
         $img = $data['img'];
+        // si salva questa immagine nello store creando una cartella imgs e mettendo l'immagine questo lo fa grazie a put quindi lo a automaticamente 
+        // NB RICORDARSI DI IMPORTARE LO STORE CON use Illuminate\Support\Facades\Storage;
         $img_path = Storage::disk('public')->put('imgs', $img);
 
         // qua si crea un nuovo componente
@@ -87,16 +89,21 @@ class typeController extends Controller
 
         return redirect()->route('pages.index');
     }
-
+    // metodo show per vedere il progetto selezionato
     public function show($id)
     {
         $project = project::find($id);
 
         return view('pages.show', compact('project'));
     }
+    // metodo delete per cancellare il progetto selezionato 
     public function delete($id)
     {
+        // si fa find per trovare il progetto selezionato
         $project = project::find($id);
+        // si devono eliminare anche i dati della tabella technologies essendo che ci sono delle row che fanno riferimento al progetto selezionato
+        // e se si eliminasse solo il progetto darebbe errore essendoc che non sanno a cosa riferirsi e si usa sync per eliminare i technologies di quel project
+        // mettendo syncs ([]) essendo che è un array di technologies si svuota direttamente l'array   
         $project->technologies()->sync([]);
         $project->delete();
         return redirect()->route('pages.index');

@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('nome_progetto');
             $table->date('inizio_progetto');
             $table->text('descrizione');
+            // NB BISOGNA CAMBIARE IN ENV FILESYSTEM_DISK DA LOCAL A PUBLIC FILESYSTEM_DISK=public E 
+            // ANCHE NEL FILE CONFIG/FILESYSTEM DA LOCAL SI METTE PUBLIC
             $table->text('img')->nullable();
 
             $table->timestamps();
