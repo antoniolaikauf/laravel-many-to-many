@@ -17,7 +17,7 @@
             </div>
             @endif
             <!-- form per upgrade method in controller  -->
-            <form action="{{route('pages.upgrade', $project->id)}}" method="POST">
+            <form action="{{route('pages.upgrade', $project->id)}}" method="POST" enctype="multipart/form-data">
 
                 @csrf
                 @method('PUT')
@@ -27,6 +27,9 @@
                 <!-- valore che da il giorno che hai iniziato il  progetto -->
                 <label for="inizio_progetto my-3">data inizio progetto</label>
                 <input type="date" name="inizio_progetto" id="inizio_progetto" value="{{$project->inizio_progetto}}">
+
+                <label for="img"> inserisci l'immagine</label>
+                <input type="file" class="form-control my-3" name="img" id="img">
 
                 <!-- valore che da la descrizione del progetto -->
                 <label for="descrizione">metti descrizione del progetto</label>

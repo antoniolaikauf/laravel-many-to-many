@@ -76,11 +76,17 @@ class typeController extends Controller
         // qua essendo che bisogna associare un type per il progetto si è usato una select essendo che un progetto avra un type 
         // e quindi con find si trova il type che c'è nell valore nome che si trova nella select
         $type = type::find($data['nome']);
+
+        $img = $data['img'];
+        // si salva questa immagine nello store creando una cartella imgs e mettendo l'immagine questo lo fa grazie a put quindi lo a automaticamente 
+        // NB RICORDARSI DI IMPORTARE LO STORE CON use Illuminate\Support\Facades\Storage;
+        $img_path = Storage::disk('public')->put('imgs', $img);
         // qua si fa find essendo che si cambia un progetto gia esistente
         $project = project::find($id);
         $project->nome_progetto = $data['nome_progetto'];
         $project->inizio_progetto = $data['inizio_progetto'];
         $project->descrizione = $data['descrizione'];
+        $project->img = $img_path;
         $project->type()->associate($type);
 
         $project->save();
