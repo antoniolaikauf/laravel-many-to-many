@@ -18,12 +18,12 @@ use App\Http\Controllers\Api\ApiController;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-Route :: group(['prefix' => '/v1'], function() {
-
-    Route :: get('Technologies', [ ApiController :: class, 'getTechnologies']);
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
 });
 
+Route::group(['prefix' => '/v1'], function () {
+
+    Route::get('Technologies', [ApiController::class, 'getTechnologies']);
+    Route::post('Technologies', [ApiController::class, 'createNewTechnology']);
+});

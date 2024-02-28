@@ -16,4 +16,18 @@ class ApiController extends Controller
             'message' => $technologies,
         ]);
     }
+
+    public function createNewTechnology(Request $request)
+    {
+        $data = $request->all();
+        $technology = new technology;
+
+        $technology->nome_tecnologia = $data['nome'];
+
+        $technology->save();
+
+        return response()->json([
+            'technology' => $technology,
+        ]);
+    }
 }
