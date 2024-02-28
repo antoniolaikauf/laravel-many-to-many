@@ -9,6 +9,9 @@ export default {
             componenti_form: {
                 nome: "",
             },
+
+            currentPage: 1,
+            pageLinks: [],
         };
     },
     methods: {
@@ -22,19 +25,22 @@ export default {
                     this.componenti_form
                 )
                 .then((risposta) => {
-                    console.log(risposta.data);
+                    this.comparsa_form = true;
+                    // console.log(risposta.data);
                     this.array_Technologies.push(risposta.data.technology);
-                    console.log(this.array_Technologies);
+                    // console.log(this.array_Technologies);
                 });
+        },
+        changePage(url) {
+            axios.get(url).then((risposta) => {
+                this.currentPage = risposta.data.message.current_page;
+                this.array_Technologies = risposta.data.message.data;
+                this.pageLinks = risposta.data.message.links;
+            });
         },
     },
     mounted() {
-        axios
-            .get("http://localhost:8000/api/v1/Technologies")
-            .then((risposta) => {
-                // console.log(risposta.data.message);
-                this.array_Technologies = risposta.data.message;
-            });
+        this.changePage("http://localhost:8000/api/v1/Technologies");
     },
 };
 </script>
@@ -50,6 +56,15 @@ export default {
                     le tecnologie usate per i progetti sono :
                     {{ Technology.nome_tecnologia }}
                 </li>
+                <div v-for="link in pageLinks">
+                    <button
+                        @click="changePage(link.url)"
+                        :href="link.url"
+                        :class="link.active ? 'text-dark' : ''"
+                    >
+                        {{ link.label }}
+                    </button>
+                </div>
             </ul>
             <div v-else>
                 <form @submit.prevent="creare_Technologies">
