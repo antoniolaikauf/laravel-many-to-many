@@ -19,7 +19,16 @@ export default {
 </script>
 
 <template>
-
+    <div class="container">
+        <div class="row">
+            <ul class="text-center">
+                <li v-for="Technology in array_Technologies">
+                    le tecnologie usate per i progetti sono :
+                    {{ Technology.nome_tecnologia }}
+                </li>
+            </ul>
+        </div>
+    </div>
 </template>
 
 <style lang="scss">
