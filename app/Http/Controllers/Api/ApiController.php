@@ -9,7 +9,7 @@ use App\Models\technology;
 
 class ApiController extends Controller
 {
-    public function getTest()
+    public function getTechnologies()
     {
         $technologies = technology::all();
         return response()->json([
