@@ -88,10 +88,11 @@ export default {
                     <button
                         @click="changePage(link.url)"
                         :href="link.url"
+                        v-html="link.label"
                         :class="link.active ? 'text-info ' : ''"
-                    >
-                        {{ link.label }}
-                    </button>
+                    />
+                    <!-- {{ link.label }}
+                    </button> -->
                 </div>
             </ul>
             <!-- orm  che permette la creazione dell nuovo componente -->
